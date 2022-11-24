@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlTrainer.Domain", "SqlTrainer.Domain\SqlTrainer.Domain.csproj", "{591CC276-F4A3-451D-AE1A-9E96F94E1ADE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlTrainer.Application", "SqlTrainer.Application\SqlTrainer.Application.csproj", "{E7BFC6B3-1C7C-4429-801A-AAE73B8C822F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlTrainer.Infrastructure", "SqlTrainer.Infrastructure\SqlTrainer.Infrastructure.csproj", "{8CF17F4A-4AA7-4F7E-BD1A-FE67534F91B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlTrainer.Persistence", "SqlTrainer.Persistence\SqlTrainer.Persistence.csproj", "{652C20D1-89A3-4E36-A3EB-AC5D0A0732E9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{591CC276-F4A3-451D-AE1A-9E96F94E1ADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{591CC276-F4A3-451D-AE1A-9E96F94E1ADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{591CC276-F4A3-451D-AE1A-9E96F94E1ADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{591CC276-F4A3-451D-AE1A-9E96F94E1ADE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7BFC6B3-1C7C-4429-801A-AAE73B8C822F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7BFC6B3-1C7C-4429-801A-AAE73B8C822F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7BFC6B3-1C7C-4429-801A-AAE73B8C822F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7BFC6B3-1C7C-4429-801A-AAE73B8C822F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CF17F4A-4AA7-4F7E-BD1A-FE67534F91B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CF17F4A-4AA7-4F7E-BD1A-FE67534F91B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CF17F4A-4AA7-4F7E-BD1A-FE67534F91B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CF17F4A-4AA7-4F7E-BD1A-FE67534F91B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{652C20D1-89A3-4E36-A3EB-AC5D0A0732E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{652C20D1-89A3-4E36-A3EB-AC5D0A0732E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{652C20D1-89A3-4E36-A3EB-AC5D0A0732E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{652C20D1-89A3-4E36-A3EB-AC5D0A0732E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
