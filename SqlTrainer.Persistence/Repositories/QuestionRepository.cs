@@ -1,5 +1,4 @@
-﻿using System.Data;
-using Dapper;
+﻿using Dapper;
 using Npgsql;
 using OperationResults;
 using OperationResults.Generic;
@@ -31,13 +30,6 @@ public sealed class QuestionRepository : Repository, IQuestionRepository
         question.CorrectAnswer.Id = Guid.NewGuid();
         
         await using var connection = new NpgsqlConnection(connectionString);
-        // var parameters = new DynamicParameters();
-        // parameters.Add("@Id", question.Id, DbType.Guid);
-        // parameters.Add("@Body", question.Body, DbType.String);
-        // parameters.Add("@MaxMark", question.MaxMark, DbType.Int32);
-        // parameters.Add("@AnswerId", question.CorrectAnswerId, DbType.Guid);
-        // parameters.Add("@AnswerBody", question.CorrectAnswer.Body, DbType.String);
-
         var dto = new
         {
             Id = question.Id,
