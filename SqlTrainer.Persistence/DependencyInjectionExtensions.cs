@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SqlTrainer.Application.Repositories;
-using SqlTrainer.Persistance.DbUp;
+using SqlTrainer.Persistence.DbUp;
 using SqlTrainer.Persistence.Configurations;
 using SqlTrainer.Persistence.Repositories;
 

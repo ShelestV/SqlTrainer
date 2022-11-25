@@ -1,6 +1,6 @@
 ﻿using DbUp.Engine;
 
-namespace SqlTrainer.Persistance.DbUp;
+namespace SqlTrainer.Persistence.DbUp;
 
 public interface IDbUpService
 {

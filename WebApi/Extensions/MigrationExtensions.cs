@@ -1,8 +1,8 @@
-﻿using SqlTrainer.Persistance.DbUp;
+﻿using SqlTrainer.Persistence.DbUp;
 
 namespace WebApi.Extensions;
 
-public static class MigrationExtencion
+public static class MigrationExtensions
 {
     public static WebApplication Migrate<TContext>(this WebApplication host)
     {
@@ -14,11 +14,11 @@ public static class MigrationExtencion
 
         if (!result.Successful)
         {
-            logger.LogInformation($"{result.Error}");
+            logger.LogInformation("{ResultError}", result.Error);
             return host;
         }
 
-        logger.LogInformation("Database migrated succesfully");
+        logger.LogInformation("Database migrated successfully");
 
         return host;
     }

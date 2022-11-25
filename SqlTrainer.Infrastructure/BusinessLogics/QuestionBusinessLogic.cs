@@ -51,7 +51,7 @@ public sealed class QuestionBusinessLogic : IQuestionBusinessLogic
         if (model is null)
             throw new ArgumentNullException(nameof(model), "Question must be not null");
         
-        if (string.IsNullOrWhiteSpace(model.Text))
+        if (string.IsNullOrWhiteSpace(model.Body))
             throw new ArgumentException("Text of question must be not null or white space");
 
         if (model.MaxMark <= 0)
@@ -60,7 +60,7 @@ public sealed class QuestionBusinessLogic : IQuestionBusinessLogic
         if (model.CorrectAnswer is null)
             throw new ArgumentException("Correct answer must be not null");
 
-        if (string.IsNullOrWhiteSpace(model.CorrectAnswer.Text))
+        if (string.IsNullOrWhiteSpace(model.CorrectAnswer.Body))
             throw new ArgumentException("Text of correct answer must be not null or white space");
     }
 }

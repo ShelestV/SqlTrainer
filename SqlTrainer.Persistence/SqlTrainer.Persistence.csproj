@@ -13,6 +13,10 @@
 
     <ItemGroup>
       <EmbeddedResource Include="Migrations\initial.sql" />
+      <None Remove="Migrations\insert_question_proc.sql" />
+      <EmbeddedResource Include="Migrations\insert_question_proc.sql">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
