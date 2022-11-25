@@ -3,20 +3,20 @@ using DbUp.Engine;
 using SqlTrainer.Persistence.Configurations;
 using System.Reflection;
 
-namespace SqlTrainer.Persistance.DbUp
+namespace SqlTrainer.Persistence.DbUp
 {
     public class DbUpService : IDbUpService
     {
-        private readonly IDatabaseConfiguration _configuration;
+        private readonly IDatabaseConfiguration configuration;
 
         public DbUpService(IDatabaseConfiguration configuration)
         {
-            _configuration = configuration;
+            this.configuration = configuration;
         }
 
         public DatabaseUpgradeResult MigrateDb()
         {
-            var connectionString = _configuration.ConnectionString;
+            var connectionString = configuration.ConnectionString;
 
             EnsureDatabase.For.PostgresqlDatabase(connectionString);
 

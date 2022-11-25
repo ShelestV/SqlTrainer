@@ -4,8 +4,8 @@ namespace SqlTrainer.Presentation.Dtos;
 
 public sealed class QuestionDto : Dto
 {
-    public string Text { get; set; } = null!;
+    public string Body { get; set; } = null!;
     public double MaxMark { get; set; }
     public Guid CorrectAnswerId { get; set; }
-    public CorrectAnswerDto CorrectAnswer { get; set; } = null!;
+    public string CorrectAnswerBody { get; set; } = null!;
 }

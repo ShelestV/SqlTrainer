@@ -37,7 +37,7 @@ create table public."tests" (
 create table public."questions" (
   "id" UUID constraint "questions_id_pk" primary key,
   "body" VARCHAR(150) constraint "questions_body_notnull" not null,
-  "max_mark" int constraint "questions_maxmark_notnull" not null
+  "max_mark" double precision constraint "questions_maxmark_notnull" not null
 );
 
 create table public."correct_answers" (
@@ -61,7 +61,7 @@ create table public."user_answers" (
   "question_id" UUID constraint "useranswers_questionid_notnull" not null,
   "body" VARCHAR(150) constraint "useranswers_body_notnull" not null,
   "user_id" UUID constraint "useranswers_userid_notnull" not null,
-  "score" INT constraint "useranswers_score_notnull" not null,
+  "score" double precision constraint "useranswers_score_notnull" not null,
   constraint "useranswers_testid_questionid_testquestions_fk" foreign key ("test_id", "question_id") references "test_questions" ("test_id", "question_id"), 
   constraint "usernaswers_userid_users_fk" foreign key ("user_id") references "users" ("id")
 );
