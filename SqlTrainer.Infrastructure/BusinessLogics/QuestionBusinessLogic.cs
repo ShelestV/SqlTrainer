@@ -1,5 +1,7 @@
 ﻿using OperationResults;
 using OperationResults.Generic;
+using OperationResults.Services;
+using OperationResults.Services.Parameters;
 using SqlTrainer.Domain.Models;
 using SqlTrainer.Application.BusinessLogics;
 using SqlTrainer.Application.Repositories;
@@ -15,16 +17,20 @@ public sealed class QuestionBusinessLogic : IQuestionBusinessLogic
         this.repository = repository;
     }
 
-    private Task<IOperationResult> BeforeAddAsync(Question model)
+    private static void BeforeAdd(Question model)
     {
-        var result = OperationResultFactory.Create();
-        result.Done();
-        return Task.FromResult(result);
+        if (string.IsNullOrWhiteSpace(model.Text))
+            throw new ArgumentException("Text of question must be not null or empty");
+
+        if (model.MaxMark <= 0)
+            throw new ArgumentException("Max mark must be greater than 0");
     }
     
     public async Task<IOperationResult<Guid>> AddAsync(Question model)
     {
-        var beforeResult = await this.BeforeAddAsync(model);
+        var param = ParamsFactory.CreateSimple(BeforeAdd, model);
+        var beforeResult = OperationService.DoOperation(param);
+        
         if (beforeResult.IsCorrect())
             return await this.repository.AddAsync(model);
 
