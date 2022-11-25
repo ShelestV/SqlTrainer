@@ -10,6 +10,7 @@ public static class DependencyInjectionExtensions
     {
         services.AddTransient<IQuestionBusinessLogic, QuestionBusinessLogic>();
         services.AddTransient<ICorrectAnswerBusinessLogic, CorrectAnswerBusinessLogic>();
+        services.AddTransient<IUserBusinessLogic, UserBusinessLogic>();
 
         return services;
     }
