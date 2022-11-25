@@ -18,15 +18,22 @@ public sealed class QuestionRepository : Repository, IQuestionRepository
     
     public async Task<IOperationResult<Guid>> AddAsync(Question model)
     {
-        var param = AsyncParamsFactory.CreateSimpleWithResult(async question =>
-        {
-            question.Id = Guid.NewGuid();
-            await using var connection = new NpgsqlConnection(connectionString);
-            await connection.ExecuteAsync("call public.\"insert_Question\"(@Id, @Text, @MaxMark)", question);
-            return question.Id;
-        }, model);
-        
+        var param = AsyncParamsFactory.CreateSimpleWithResult(DoAddAsync, model);
         return await OperationService.DoOperationWithResultAsync(param);
+    }
+
+    private async Task<Guid> DoAddAsync(Question question)
+    {
+        question.Id = Guid.NewGuid();
+        question.CorrectAnswer!.QuestionId = question.Id;
+            
+        await using var connection = new NpgsqlConnection(connectionString);
+        // ToDo: call these queries on db side
+        await connection.ExecuteAsync("call public.\"insert_Question\"(@Id, @Text, @MaxMark)", question);
+        await connection.ExecuteAsync("call public.\"insert_CorrectAnswer\"(@Id, @Text, @QuestionId)", question.CorrectAnswer);
+        await connection.ExecuteAsync("call public.\"update_Question_AddCorrectAnswerId\"(@Id, @CorrectAnswerId)", question);
+            
+        return question.Id;
     }
     
     public async Task<IOperationResult> DeleteAsync(Guid id)

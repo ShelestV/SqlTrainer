@@ -17,20 +17,9 @@ public sealed class QuestionBusinessLogic : IQuestionBusinessLogic
         this.repository = repository;
     }
 
-    private static void BeforeAdd(Question model)
-    {
-        if (string.IsNullOrWhiteSpace(model.Text))
-            throw new ArgumentException("Text of question must be not null or empty");
-
-        if (model.MaxMark <= 0)
-            throw new ArgumentException("Max mark must be greater than 0");
-    }
-    
     public async Task<IOperationResult<Guid>> AddAsync(Question model)
     {
-        var param = ParamsFactory.CreateSimple(BeforeAdd, model);
-        var beforeResult = OperationService.DoOperation(param);
-        
+        var beforeResult = DoBefore(model);
         if (beforeResult.IsCorrect())
             return await this.repository.AddAsync(model);
 
@@ -42,19 +31,36 @@ public sealed class QuestionBusinessLogic : IQuestionBusinessLogic
         return await repository.DeleteAsync(id);
     }
 
-    private Task<IOperationResult> BeforeUpdateAsync(Question model)
-    {
-        var result = OperationResultFactory.Create();
-        result.Done();
-        return Task.FromResult(result);
-    }
-    
     public async Task<IOperationResult> UpdateAsync(Question model)
     {
-        var beforeResult = await this.BeforeUpdateAsync(model);
+        var beforeResult = DoBefore(model);
         if (beforeResult.IsCorrect())
             return await this.repository.UpdateAsync(model);
 
         return beforeResult;
+    }
+
+    private static IOperationResult DoBefore(Question model)
+    {
+        var param = ParamsFactory.CreateSimple(Before, model);
+        return OperationService.DoOperation(param);
+    }
+    
+    private static void Before(Question model)
+    {
+        if (model is null)
+            throw new ArgumentNullException(nameof(model), "Question must be not null");
+        
+        if (string.IsNullOrWhiteSpace(model.Text))
+            throw new ArgumentException("Text of question must be not null or white space");
+
+        if (model.MaxMark <= 0)
+            throw new ArgumentException("Max mark must be greater than 0");
+
+        if (model.CorrectAnswer is null)
+            throw new ArgumentException("Correct answer must be not null");
+
+        if (string.IsNullOrWhiteSpace(model.CorrectAnswer.Text))
+            throw new ArgumentException("Text of correct answer must be not null or white space");
     }
 }
