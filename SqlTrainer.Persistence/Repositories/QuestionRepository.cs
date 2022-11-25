@@ -7,6 +7,7 @@ using OperationResults.Services.Parameters;
 using SqlTrainer.Application.Repositories;
 using SqlTrainer.Domain.Models;
 using SqlTrainer.Persistence.Configurations;
+using SqlTrainer.Persistence.Dtos;
 
 namespace SqlTrainer.Persistence.Repositories;
 
@@ -30,7 +31,7 @@ public sealed class QuestionRepository : Repository, IQuestionRepository
         question.CorrectAnswer.Id = Guid.NewGuid();
         
         await using var connection = new NpgsqlConnection(connectionString);
-        var dto = new
+        var dto = new QuestionInsertDto
         {
             Id = question.Id,
             Body = question.Body,
