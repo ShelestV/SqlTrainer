@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SqlTrainer.Application.Repositories;
+using SqlTrainer.Persistance.DbUp;
 using SqlTrainer.Persistence.Configurations;
 using SqlTrainer.Persistence.Repositories;
 
@@ -10,7 +11,9 @@ public static class DependencyInjection
     public static IServiceCollection InjectRepositories(this IServiceCollection services, string connectionString)
     {
         services.AddSingleton<IDatabaseConfiguration>(new DatabaseConfiguration(connectionString));
-        
+
+        services.AddTransient<IDbUpService, DbUpService>();
+
         services.AddScoped<IQuestionRepository, QuestionRepository>();
         services.AddScoped<ICorrectAnswerRepository, CorrectAnswerRepository>();
         

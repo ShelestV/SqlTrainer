@@ -1,5 +1,6 @@
 using SqlTrainer.Infrastructure;
 using SqlTrainer.Persistence;
+using WebApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = new ConfigurationBuilder()
@@ -31,4 +32,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+app.Migrate<Program>().Run();
