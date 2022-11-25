@@ -8,6 +8,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Remove="Migrations\initial.sql" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="Migrations\initial.sql" />
+    </ItemGroup>
+
+    <ItemGroup>
       <ProjectReference Include="..\SqlTrainer.Application\SqlTrainer.Application.csproj" />
     </ItemGroup>
 
