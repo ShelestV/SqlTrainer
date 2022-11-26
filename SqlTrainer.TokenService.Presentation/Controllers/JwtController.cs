@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SqlTrainer.Application.BusinessLogics;
+using SqlTrainer.Application.PasswordHasher;
 using SqlTrainer.TokenService.Presentation.Dtos;
 using SqlTrainer.TokenService.Presentation.Helpers;
 
@@ -12,11 +13,15 @@ public sealed class JwtController : Controller
 {
     private readonly IJwtService jwtBusinessLogic;
     private readonly IUserBusinessLogic userBusinessLogic;
+    private readonly IPasswordHasher passwordHasher;
 
-    public JwtController(IJwtService jwtBusinessLogic, IUserBusinessLogic userBusinessLogic)
+    public JwtController(IJwtService jwtBusinessLogic, 
+                IUserBusinessLogic userBusinessLogic, 
+                IPasswordHasher passwordHasher)
     {
         this.jwtBusinessLogic = jwtBusinessLogic;
         this.userBusinessLogic = userBusinessLogic;
+        this.passwordHasher = passwordHasher;
     }
 
     [HttpPost("/login")]
@@ -27,7 +32,9 @@ public sealed class JwtController : Controller
 
         var user = users.Result.ToArray()[0];
 
-        if (user is null && user!.HashPassword != dto.Password)
+        var password = passwordHasher.HashPassword(dto.Password).Result;
+
+        if (user is null && user!.HashPassword != password)
             return BadRequest("Incorrect login or password");
 
         var token = this.jwtBusinessLogic.Generate(user);
