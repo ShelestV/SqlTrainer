@@ -7,6 +7,7 @@ using OperationResults.Services.Parameters;
 using SqlTrainer.Application.Repositories;
 using SqlTrainer.Domain.Models;
 using SqlTrainer.Persistence.Configurations;
+using SqlTrainer.Persistence.Dtos;
 
 namespace SqlTrainer.Persistence.Repositories;
 
@@ -26,13 +27,20 @@ public sealed class QuestionRepository : Repository, IQuestionRepository
     {
         question.Id = Guid.NewGuid();
         question.CorrectAnswer!.QuestionId = question.Id;
-            
+        question.CorrectAnswerId = Guid.NewGuid();
+        question.CorrectAnswer.Id = Guid.NewGuid();
+        
         await using var connection = new NpgsqlConnection(connectionString);
-        // ToDo: call these queries on db side
-        await connection.ExecuteAsync("call public.\"insert_Question\"(@Id, @Text, @MaxMark)", question);
-        await connection.ExecuteAsync("call public.\"insert_CorrectAnswer\"(@Id, @Text, @QuestionId)", question.CorrectAnswer);
-        await connection.ExecuteAsync("call public.\"update_Question_AddCorrectAnswerId\"(@Id, @CorrectAnswerId)", question);
-            
+        var dto = new QuestionInsertDto
+        {
+            Id = question.Id,
+            Body = question.Body,
+            MaxMark = question.MaxMark,
+            AnswerId = question.CorrectAnswerId,
+            AnswerBody = question.CorrectAnswer.Body
+        };
+        await connection.ExecuteAsync("call insert_question (@Id, @Body, @MaxMark, @AnswerId, @AnswerBody)", dto);
+
         return question.Id;
     }
     

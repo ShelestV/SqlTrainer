@@ -10,19 +10,14 @@ public static class DtoExtensions
         return new Question
         {
             Id = dto.Id,
-            Text = dto.Text,
+            Body = dto.Body,
             MaxMark = dto.MaxMark,
-            CorrectAnswerId = null,
-        };
-    }
-
-    public static CorrectAnswer ToModel(this CorrectAnswerDto dto)
-    {
-        return new CorrectAnswer
-        {
-            Id = dto.Id,
-            Text = dto.Text,
-            QuestionId = dto.QuestionId,
+            CorrectAnswerId = dto.CorrectAnswerId,
+            CorrectAnswer = new CorrectAnswer()
+            {
+                Id = dto.CorrectAnswerId,
+                Body = dto.Body
+            }
         };
     }
 }

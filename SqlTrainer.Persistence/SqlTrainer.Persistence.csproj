@@ -13,6 +13,14 @@
 
     <ItemGroup>
       <EmbeddedResource Include="Migrations\initial.sql" />
+      <None Remove="Migrations\insert_question_proc.sql" />
+      <EmbeddedResource Include="Migrations\insert_question_proc.sql">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Migrations\get_user_by_login.sql" />
+      <EmbeddedResource Include="Migrations\get_user_by_login.sql">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>

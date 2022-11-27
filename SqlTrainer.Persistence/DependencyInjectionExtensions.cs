@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SqlTrainer.Application.Repositories;
-using SqlTrainer.Persistance.DbUp;
+using SqlTrainer.Persistence.DbUp;
 using SqlTrainer.Persistence.Configurations;
 using SqlTrainer.Persistence.Repositories;
 
@@ -16,6 +16,8 @@ public static class DependencyInjection
 
         services.AddScoped<IQuestionRepository, QuestionRepository>();
         services.AddScoped<ICorrectAnswerRepository, CorrectAnswerRepository>();
+
+        services.AddScoped<IUserRepository, UserRepository>();
         
         return services;
     }

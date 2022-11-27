@@ -9,10 +9,11 @@ var config = new ConfigurationBuilder()
     .Build();
 
 // Add services to the container.
-var connectionString = config.GetConnectionString("Default");
-builder.Services.InjectRepositories(connectionString);
-builder.Services.InjectBusinessLogics();
-builder.Services.AddControllers();
+builder.Services
+       .InjectRepositories(config.GetConnectionString("Default"))
+       .InjectBusinessLogics()
+       .AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

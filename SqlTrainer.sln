@@ -1,16 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlTrainer.Domain", "SqlTrainer.Domain\SqlTrainer.Domain.csproj", "{591CC276-F4A3-451D-AE1A-9E96F94E1ADE}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlTrainer.Domain", "SqlTrainer.Domain\SqlTrainer.Domain.csproj", "{591CC276-F4A3-451D-AE1A-9E96F94E1ADE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlTrainer.Application", "SqlTrainer.Application\SqlTrainer.Application.csproj", "{E7BFC6B3-1C7C-4429-801A-AAE73B8C822F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlTrainer.Application", "SqlTrainer.Application\SqlTrainer.Application.csproj", "{E7BFC6B3-1C7C-4429-801A-AAE73B8C822F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlTrainer.Infrastructure", "SqlTrainer.Infrastructure\SqlTrainer.Infrastructure.csproj", "{8CF17F4A-4AA7-4F7E-BD1A-FE67534F91B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlTrainer.Infrastructure", "SqlTrainer.Infrastructure\SqlTrainer.Infrastructure.csproj", "{8CF17F4A-4AA7-4F7E-BD1A-FE67534F91B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlTrainer.Persistence", "SqlTrainer.Persistence\SqlTrainer.Persistence.csproj", "{652C20D1-89A3-4E36-A3EB-AC5D0A0732E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlTrainer.Persistence", "SqlTrainer.Persistence\SqlTrainer.Persistence.csproj", "{652C20D1-89A3-4E36-A3EB-AC5D0A0732E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlTrainer.Presentation", "SqlTrainer.Presentation\SqlTrainer.Presentation.csproj", "{D7E3506D-B773-48B5-A40F-4C42BD26AB56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlTrainer.Presentation", "SqlTrainer.Presentation\SqlTrainer.Presentation.csproj", "{D7E3506D-B773-48B5-A40F-4C42BD26AB56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{F3EE02BF-FD94-49B2-9909-BEFC8288D8F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{F3EE02BF-FD94-49B2-9909-BEFC8288D8F8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlTrainer.TokenService.Presentation", "SqlTrainer.TokenService.Presentation\SqlTrainer.TokenService.Presentation.csproj", "{8AC068C9-FD5E-4555-B647-C1E91EA60496}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlTrainer.TokenService.WebApi", "SqlTrainer.TokenService.WebApi\SqlTrainer.TokenService.WebApi.csproj", "{EEF95799-7EEE-4A2A-827D-6091ABE76619}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,5 +49,19 @@ Global
 		{F3EE02BF-FD94-49B2-9909-BEFC8288D8F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3EE02BF-FD94-49B2-9909-BEFC8288D8F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3EE02BF-FD94-49B2-9909-BEFC8288D8F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AC068C9-FD5E-4555-B647-C1E91EA60496}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AC068C9-FD5E-4555-B647-C1E91EA60496}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AC068C9-FD5E-4555-B647-C1E91EA60496}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AC068C9-FD5E-4555-B647-C1E91EA60496}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEF95799-7EEE-4A2A-827D-6091ABE76619}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEF95799-7EEE-4A2A-827D-6091ABE76619}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEF95799-7EEE-4A2A-827D-6091ABE76619}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEF95799-7EEE-4A2A-827D-6091ABE76619}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4EDCB6E1-F1B5-4A48-A5F0-794D3F531099}
 	EndGlobalSection
 EndGlobal
