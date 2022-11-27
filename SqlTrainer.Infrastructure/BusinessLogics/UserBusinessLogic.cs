@@ -16,11 +16,9 @@ public sealed class UserBusinessLogic : IUserBusinessLogic
         this.repository = repository;
         this.passwordHasher = passwordHasher;
     }
-
-
+    
     // ToDo: Hash password before adding new user to db
-
-    public async Task<IOperationResult<IReadOnlyCollection<User>>> GetByLoginAsync(string login)
+    public async Task<IOperationResult<User>> GetByLoginAsync(string login)
     {
         return await this.repository.GetByLoginAsync(login);
     }

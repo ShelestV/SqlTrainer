@@ -12,10 +12,10 @@ namespace SqlTrainer.TokenService.Presentation.Helpers;
 
 public class JwtService : IJwtService
 {
-    private readonly IConfiguration _configuration;
+    private readonly IConfiguration configuration;
 
     public JwtService(IConfiguration configuration) =>
-        _configuration = configuration;
+        this.configuration = configuration;
 
     public IOperationResult<string> Generate(User user)
     {
@@ -28,13 +28,13 @@ public class JwtService : IJwtService
     {
         var claims = new List<Claim>
             {
-                new Claim("id", user.Id.ToString()),
-                new Claim("name", user.Name),
-                new Claim("role", user.Role.Name),
-                new Claim("group", user.Group.Name)
+                new("id", user.Id.ToString()),
+                new("name", user.Name),
+                new("role", user.Role.Name),
+                new("group", user.Group.Name)
             };
 
-        var secretKey = _configuration["Key"];
+        var secretKey = configuration["Key"];
 
         var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
         var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);

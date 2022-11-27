@@ -17,13 +17,13 @@ public sealed class UserRepository : Repository, IUserRepository
     {
     }
 
-    public async Task<IOperationResult<IReadOnlyCollection<User>>> GetByLoginAsync(string login)
+    public async Task<IOperationResult<User>> GetByLoginAsync(string login)
     {
         var param = AsyncParamsFactory.CreateSimpleWithResult(DoGetByLoginAsync, login);
         return await OperationService.DoOperationWithResultAsync(param);
     }
 
-    private async Task<IReadOnlyCollection<User>?> DoGetByLoginAsync(string login)
+    private async Task<User?> DoGetByLoginAsync(string login)
     {
         await using var connection = new NpgsqlConnection(this.connectionString);
         var dto = new
@@ -31,6 +31,6 @@ public sealed class UserRepository : Repository, IUserRepository
             Login = login
         };
         var users = await connection.QueryAsync<UserGetDto>("select * from get_user_by_login (@Login)", dto);
-        return users?.Select(user => user.ToModel()).ToList();
+        return users?.FirstOrDefault()?.ToModel();
     }
 }

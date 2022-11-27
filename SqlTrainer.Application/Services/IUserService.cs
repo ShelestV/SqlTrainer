@@ -5,5 +5,5 @@ namespace SqlTrainer.Application.Services;
 
 public interface IUserService
 {
-    Task<IOperationResult<IReadOnlyCollection<User>>> GetByLoginAsync(string login);
+    Task<IOperationResult<User>> GetByLoginAsync(string login);
 }
