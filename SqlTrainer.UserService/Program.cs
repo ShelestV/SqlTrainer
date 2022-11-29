@@ -37,4 +37,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MigrateDatabase<Program>(typeof(UserGetDto)).Run();
+app.MigrateDatabase<Program>().Run();
