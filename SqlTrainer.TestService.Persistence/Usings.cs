@@ -1,0 +1,11 @@
+﻿global using Npgsql;
+global using Dapper;
+global using OperationResults;
+global using OperationResults.Generic;
+global using OperationResults.Services;
+global using OperationResults.Services.Parameters;
+global using SqlTrainer.Persistence.Repositories;
+global using SqlTrainer.Persistence.Configurations;
+global using SqlTrainer.TestService.Domain.Models;
+global using SqlTrainer.TestService.Application.Repositories;
+global using SqlTrainer.TestService.Persistence.Dtos;
