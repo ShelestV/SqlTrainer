@@ -5,16 +5,17 @@ using SqlTrainer.Persistence.Configurations;
 
 namespace SqlTrainer.Postgres;
 
-public sealed class DbUpService : IDbUpService
+public abstract class DbUpService : IDbUpService
 {
     private readonly IDatabaseConfiguration configuration;
-
-    public DbUpService(IDatabaseConfiguration configuration)
+    protected abstract Assembly MigrationAssembly { get; }
+    
+    protected DbUpService(IDatabaseConfiguration configuration)
     {
         this.configuration = configuration;
     }
 
-    public DatabaseUpgradeResult Migrate(Assembly migrationAssembly)
+    public DatabaseUpgradeResult Migrate()
     {
         var connectionString = configuration.ConnectionString;
 
@@ -22,7 +23,7 @@ public sealed class DbUpService : IDbUpService
 
         var upgrader = DeployChanges.To
             .PostgresqlDatabase(connectionString)
-            .WithScriptsEmbeddedInAssembly(migrationAssembly)
+            .WithScriptsEmbeddedInAssembly(this.MigrationAssembly)
             .LogToConsole()
             .Build();
 

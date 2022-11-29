@@ -37,4 +37,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MigrateDatabase<Program>(typeof(QuestionInsertDto)).Run();
+app.MigrateDatabase<Program>().Run();
