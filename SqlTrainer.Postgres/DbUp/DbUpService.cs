@@ -14,7 +14,7 @@ public sealed class DbUpService : IDbUpService
         this.configuration = configuration;
     }
 
-    public DatabaseUpgradeResult Migrate()
+    public DatabaseUpgradeResult Migrate(Assembly migrationAssembly)
     {
         var connectionString = configuration.ConnectionString;
 
@@ -22,7 +22,7 @@ public sealed class DbUpService : IDbUpService
 
         var upgrader = DeployChanges.To
             .PostgresqlDatabase(connectionString)
-            .WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly())
+            .WithScriptsEmbeddedInAssembly(migrationAssembly)
             .LogToConsole()
             .Build();
 

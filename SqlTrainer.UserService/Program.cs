@@ -1,4 +1,6 @@
+using SqlTrainer.Postgres.Extensions;
 using SqlTrainer.UserService.Infrastructure.Extensions;
+using SqlTrainer.UserService.Persistence.Dtos;
 using SqlTrainer.UserService.Persistence.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,4 +37,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+app.MigrateDatabase<Program>(typeof(UserGetDto)).Run();

@@ -7,6 +7,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Remove="Migrations\initial.sql" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="Migrations\initial.sql" />
+    </ItemGroup>
+
+    <ItemGroup>
       <ProjectReference Include="..\SqlTrainer.Postgres\SqlTrainer.Postgres.csproj" />
       <ProjectReference Include="..\SqlTrainer.TestService.Application\SqlTrainer.TestService.Application.csproj" />
     </ItemGroup>

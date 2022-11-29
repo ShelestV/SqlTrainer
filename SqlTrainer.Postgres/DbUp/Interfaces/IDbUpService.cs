@@ -1,8 +1,9 @@
 ﻿using DbUp.Engine;
+using System.Reflection;
 
 namespace SqlTrainer.Postgres;
 
 public interface IDbUpService
 {
-    DatabaseUpgradeResult Migrate();
+    DatabaseUpgradeResult Migrate(Assembly migrationAssembly);
 }

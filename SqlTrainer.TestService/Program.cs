@@ -1,4 +1,6 @@
+using SqlTrainer.Postgres.Extensions;
 using SqlTrainer.TestService.Infrastructure.Extensions;
+using SqlTrainer.TestService.Persistence.Dtos;
 using SqlTrainer.TestService.Persistence.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,4 +37,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+app.MigrateDatabase<Program>(typeof(QuestionInsertDto)).Run();
