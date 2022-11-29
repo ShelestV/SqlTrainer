@@ -1,4 +1,5 @@
 using SqlTrainer.Postgres.Extensions;
+using SqlTrainer.Presentation.Extensions;
 using SqlTrainer.UserService.Infrastructure.Extensions;
 using SqlTrainer.UserService.Persistence.Dtos;
 using SqlTrainer.UserService.Persistence.Extensions;
@@ -15,7 +16,8 @@ var jwtSecretKey = config.GetValue<string>("Jwt:SecretKey")!;
 
 builder.Services
     .InjectRepositories(connectionString)
-    .InjectBusinessLogics(jwtSecretKey);
+    .InjectBusinessLogics(jwtSecretKey)
+    .ConfigureModelStateErrorsBehavior();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

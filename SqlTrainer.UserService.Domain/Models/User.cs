@@ -9,4 +9,6 @@ public sealed class User : Model
     public required Role Role { get; set; }
     public Guid GroupId { get; set; }
     public required Group Group { get; set; }
+    public required string FaceImage { get; set; }
+    public double Rate { get; set; }
 }
