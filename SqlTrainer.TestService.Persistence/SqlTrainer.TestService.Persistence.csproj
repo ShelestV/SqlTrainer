@@ -7,6 +7,15 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\SqlTrainer.Postgres\SqlTrainer.Postgres.csproj" />
+      <ProjectReference Include="..\SqlTrainer.TestService.Application\SqlTrainer.TestService.Application.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Dapper" Version="2.0.123" />
+    </ItemGroup>
+
+    <ItemGroup>
       <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
         <HintPath>..\..\..\..\..\..\..\Program Files\dotnet\shared\Microsoft.AspNetCore.App\7.0.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
       </Reference>
