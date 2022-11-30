@@ -35,7 +35,7 @@ public sealed class UserRepository : Repository, IUserRepository
     private async Task<Guid> DoAddAsync(User user)
     {
         await using var connection = new NpgsqlConnection(this.connectionString);
-        var query = "call insert_user (@Id, @Name, @Login, @HashPassword, @RoleId, @GroupId, @FaceImage, @Rate)";
+        var query = "call insert_user (@Id, @Name, @Login, @HashedPassword, @RoleId, @GroupId, @FaceImage, @Rate)";
         var dto = new UserInsertDto
         {
             Id = user.Id,
@@ -48,7 +48,7 @@ public sealed class UserRepository : Repository, IUserRepository
             Rate = user.Rate,
         };
 
-        await connection.ExecuteAsync(query, dto);
+        await connection.ExecuteAsync(query, user);
 
         return user.Id;
     }
