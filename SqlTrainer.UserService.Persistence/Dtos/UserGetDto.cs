@@ -10,4 +10,6 @@ public sealed class UserGetDto
     public required string Role { get; set; } // json
     public Guid GroupId { get; set; }
     public required string Group { get; set; } // json
+    public required string FaceImage { get; set; }
+    public double Rate { get; set; }
 }

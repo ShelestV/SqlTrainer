@@ -6,6 +6,11 @@ public static class DtoExtensions
 {
     public static User ToModel(this UserGetDto dto)
     {
+        var options = new JsonSerializerOptions
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        };
+
         return new User
         {
             Id = dto.Id,
@@ -14,8 +19,10 @@ public static class DtoExtensions
             HashedPassword = dto.HashedPassword,
             GroupId = dto.GroupId,
             RoleId = dto.RoleId,
-            Group = JsonSerializer.Deserialize<Group>(dto.Group)!,
-            Role = JsonSerializer.Deserialize<Role>(dto.Role)!
+            Group = JsonSerializer.Deserialize<Group>(dto.Group, options)!,
+            Role = JsonSerializer.Deserialize<Role>(dto.Role, options)!,
+            FaceImage = dto.FaceImage,
+            Rate = dto.Rate
         };
     }
 }
