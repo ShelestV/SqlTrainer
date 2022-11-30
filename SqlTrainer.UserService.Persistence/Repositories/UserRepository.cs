@@ -9,7 +9,7 @@ public sealed class UserRepository : Repository, IUserRepository
     {
     }
 
-    public async Task<IOperationResult<Guid>> RegisterAsync(User model)
+    public async Task<IOperationResult<Guid>> AddAsync(User model)
     {
         var param = AsyncParamsFactory.CreateSimpleWithResult(DoAddAsync, model);
         return await OperationService.DoOperationWithResultAsync(param);

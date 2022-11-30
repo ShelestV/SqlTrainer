@@ -2,5 +2,5 @@
 
 public interface IUserService
 {
-    Task<IOperationResult<Guid>> RegisterAsync(User model);
+    Task<IOperationResult<Guid>> AddAsync(User model);
 }

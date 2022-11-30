@@ -21,6 +21,8 @@ public static class DependencyInjectionExtensions
 
         services.AddTransient<ILoginBusinessLogic, LoginBusinessLogic>();
 
+        services.AddTransient<IRegistarationBusinessLogic, RegistrationBusinessLogic>();
+
         services.AddTransient<IPasswordHasher, PasswordHasher>();
 
         var signinKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecretKey));

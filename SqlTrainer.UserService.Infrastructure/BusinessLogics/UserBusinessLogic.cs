@@ -13,16 +13,16 @@ public sealed class UserBusinessLogic : IUserBusinessLogic
         this.passwordHasher = passwordHasher;
     }
 
-    public async Task<IOperationResult<Guid>> RegisterAsync(User model)
+    public async Task<IOperationResult<Guid>> AddAsync(User model)
     {
-        var userResult = await repository.GetByLoginAsync(model.Login);
-
-        if (userResult.State == OperationResultState.Ok)
-            throw new Exception("User with the same login already exists");
-
         var hashedPassword = passwordHasher.Hash(model.HashedPassword).Result;
         model.HashedPassword = hashedPassword;
 
-        return await repository.RegisterAsync(model);
+        return await repository.AddAsync(model);
+    }
+
+    public async Task<IOperationResult<User>> GetByLoginAsync(string login)
+    {
+        return await this.repository.GetByLoginAsync(login);
     }
 }

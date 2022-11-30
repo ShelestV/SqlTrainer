@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using SqlTrainer.JwtService.Infrastructure.BusinessLogics;
+using SqlTrainer.UserService.Application.BusinessLogics;
 using SqlTrainer.UserService.Presentation.Extensions;
 using Controller = SqlTrainer.Presentation.Controllers.Controller;
 
@@ -11,22 +12,22 @@ public sealed class UsersController : Controller
 {
     private readonly IJwtBusinessLogic jwtBusinessLogic;
     private readonly ILoginBusinessLogic loginBusinessLogic;
-    private readonly IUserBusinessLogic userBusinessLogic;
+    private readonly IRegistarationBusinessLogic registerBusinessLogic;
 
-    public UsersController(IJwtBusinessLogic jwtBusinessLogic, 
-                    ILoginBusinessLogic loginBusinessLogic, 
-                    IUserBusinessLogic userBusinessLogic)
+    public UsersController(IJwtBusinessLogic jwtBusinessLogic,
+                    ILoginBusinessLogic loginBusinessLogic,
+                    IRegistarationBusinessLogic registerBusinessLogic)
     {
         this.jwtBusinessLogic = jwtBusinessLogic;
         this.loginBusinessLogic = loginBusinessLogic;
-        this.userBusinessLogic = userBusinessLogic;
+        this.registerBusinessLogic = registerBusinessLogic;
     }
 
     [HttpPost("/register")]
     [AllowAnonymous]
     public async Task<IActionResult> RegisterAsync([FromBody] RegisterDto dto)
     {
-        var result = await this.userBusinessLogic.RegisterAsync(dto.ToModel());
+        var result = await this.registerBusinessLogic.RegisterAsync(dto.ToModel());
 
         return result.ToActionResult();
     }
