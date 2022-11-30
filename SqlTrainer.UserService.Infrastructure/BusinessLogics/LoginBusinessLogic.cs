@@ -22,6 +22,7 @@ public sealed class LoginBusinessLogic : ILoginBusinessLogic
             return getUserResult;
         
         var getPasswordResult = this.passwordHasher.Hash(password);
+
         if (!getPasswordResult.IsCorrect())
             return getPasswordResult.ChangeResultType<string, User>();
 

@@ -36,17 +36,6 @@ public sealed class UserRepository : Repository, IUserRepository
     {
         await using var connection = new NpgsqlConnection(this.connectionString);
         var query = "call insert_user (@Id, @Name, @Login, @HashedPassword, @RoleId, @GroupId, @FaceImage, @Rate)";
-        var dto = new UserInsertDto
-        {
-            Id = user.Id,
-            Name = user.Name,
-            Login = user.Login,
-            HashPassword = user.HashedPassword,
-            RoleId = user.RoleId,
-            GroupId = user.GroupId,
-            FaceImage = user.FaceImage,
-            Rate = user.Rate,
-        };
 
         await connection.ExecuteAsync(query, user);
 
